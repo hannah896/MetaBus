@@ -5,14 +5,14 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
-    private float velocity = 0.005f;
+    private float velocity = 0.08f;
 
     private void Start()
     {
         Camera camera = Camera.main;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         float horizontal = Input.GetAxisRaw("Horizontal"); //수평 = 좌우 = a, d, <-, -> 입력을 받아옴
         float Vertical = Input.GetAxisRaw("Vertical"); //수직 = 상하 = w, s, ↑, ↓ 입력을 받아옴
@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move(Vector2 direction)
     {
+        Debug.Log("IMoved");
         Transform transform = this.GetComponent<Transform>();
 
         float valueX = transform.localPosition.x + direction.x * velocity;
