@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public readonly string minigameTag = "MinigameTrigger";
 
     public static GameManager Instance;
+
     private void Awake()
     {
         if (Instance == null)
@@ -24,13 +25,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int coinScore = 0;
-    public int CoinScore
-    {
-        get { return coinScore; }
-        set { coinScore = value; }
-    }
-
     //오브젝트와 상호작용
     public void Interact(GameObject obj)
     {
@@ -38,9 +32,5 @@ public class GameManager : MonoBehaviour
         fountain.Info();
     }
 
-    //미니게임 게임오버되었을때 점수 저장
-    public void SaveScore(string name)
-    {
-        PlayerPrefs.SetInt(name, coinScore);
-    }
+
 }
