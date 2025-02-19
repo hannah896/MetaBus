@@ -15,6 +15,8 @@ public class CoinMaker : MonoBehaviour
 
     private void Update()
     {
+        if (minigameManager.gameover) return;
+
         Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         transform.position = new Vector3(MousePos.x, 3f, 0);
