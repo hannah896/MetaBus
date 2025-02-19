@@ -4,11 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Button : MonoBehaviour
+public class ExitButton : MonoBehaviour
 {
     public void Exit()
     {
-        Debug.Log("Á×À»°Ô ^_^");
         MinigameManager.Instance.isExit = true;
     }
 }

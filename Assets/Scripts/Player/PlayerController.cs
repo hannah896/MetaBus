@@ -41,11 +41,19 @@ public class PlayerController : MonoBehaviour
         if (isContact == false) return;
 
         GameObject col = collision.gameObject;
-        
+
         //아이템 오브젝트와 상호작용
         if (col.CompareTag(gameManager.minigameTag))
         {
-            gameManager.Interact(col);
+            gameManager.InteractMiniGame(col);
+        }
+
+        Debug.Log(col.tag);
+        //아이템 리더보드랑 상호작용
+        if (col.CompareTag(gameManager.leaderBoardTag))
+        {
+            Debug.Log("상호작용");
+            gameManager.InteractLeaderBoard(col);
         }
     }
 

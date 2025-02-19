@@ -20,6 +20,10 @@ public abstract class BaseObject : MonoBehaviour
             //미니게임 불러오기
             GameStart();
         }
+        if (Input.GetKey(KeyCode.X))
+        {
+            AnnouncePanel.SetActive(false);
+        }
     }
 
     public abstract void GameStart();

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +6,7 @@ public class GameManager : MonoBehaviour
     public readonly string playerCoinScore = "PlayerCoinScore";
     public readonly string playerDropScore = "playerDropScore";
     public readonly string minigameTag = "MinigameTrigger";
+    public readonly string leaderBoardTag = "LeaderBoard";
 
     public static GameManager Instance;
 
@@ -16,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1.0f;
         if (Instance == null)
         {
             Instance = this;
@@ -26,10 +25,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //오브젝트와 상호작용
-    public void Interact(GameObject obj)
+    //미니게임 상호작용
+    public void InteractMiniGame(GameObject obj)
     {
         Fountain fountain = obj.GetComponent<Fountain>();
         fountain.Info();
+    }
+
+    public void InteractLeaderBoard(GameObject obj)
+    {
+        LeaderBoard board = obj.GetComponent<LeaderBoard>();
+        board.Info();
     }
 }
