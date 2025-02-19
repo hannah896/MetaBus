@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 public class Coin : MonoBehaviour
 {
     float size = 1f;
-    int score = 1;
     
     MinigameManager minigameManager;
 
@@ -23,6 +22,7 @@ public class Coin : MonoBehaviour
         if (collision.gameObject.CompareTag("bottom"))
         {
             minigameManager.gameover = true;
+            Time.timeScale = 0f;
         }
     }
 }

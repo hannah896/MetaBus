@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
         {
             gameManager.Interact(col);
         }
-
     }
 
     //물리처리프레임기준

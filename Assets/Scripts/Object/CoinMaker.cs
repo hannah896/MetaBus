@@ -25,14 +25,13 @@ public class CoinMaker : MonoBehaviour
         {
             minigameManager.position = new Vector3(MousePos.x, 3f, 0);
             minigameManager.flag = false;
-
             MakeCoin();
+            minigameManager.CoinScore++;
         }
     }
 
     private void MakeCoin()
     {
-
         Vector2 pos = minigameManager.position;
         Instantiate(coin, pos, Quaternion.identity);
         minigameManager.flag = true;

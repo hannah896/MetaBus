@@ -32,6 +32,4 @@ public class GameManager : MonoBehaviour
         Fountain fountain = obj.GetComponent<Fountain>();
         fountain.Info();
     }
-
-
 }
