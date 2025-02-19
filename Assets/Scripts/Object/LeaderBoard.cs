@@ -6,15 +6,13 @@ using UnityEngine.UI;
 public class LeaderBoard : BaseObject
 {
     public Text bestScoreTxt;
-    public Text scoreTxt;
-
 
     public override void GameStart()
     {
         GameManager gameManager = GameManager.Instance;
 
-        int bestScore = PlayerPrefs.GetInt(gameManager.playerCoinScore);
+        int bestScore = PlayerPrefs.GetInt(gameManager.playerCoinScore, -1);
 
-        bestScoreTxt.text = $"{}"
+        bestScoreTxt.text = $"{bestScore}";
     }
 }

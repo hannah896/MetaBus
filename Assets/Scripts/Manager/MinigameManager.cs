@@ -64,9 +64,9 @@ public class MinigameManager : MonoBehaviour
     private void SaveScore()
     {
         string name = gameManager.playerCoinScore;
-        int bestScore = PlayerPrefs.GetInt(name);
+        int bestScore = CoinScore > PlayerPrefs.GetInt(name) ? CoinScore : PlayerPrefs.GetInt(name);
 
-        PlayerPrefs.SetInt(name, CoinScore > bestScore ? CoinScore : bestScore);
+        PlayerPrefs.SetInt(name, bestScore);
         isSave = true;
     }
 }

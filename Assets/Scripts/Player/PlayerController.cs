@@ -48,11 +48,9 @@ public class PlayerController : MonoBehaviour
             gameManager.InteractMiniGame(col);
         }
 
-        Debug.Log(col.tag);
         //아이템 리더보드랑 상호작용
         if (col.CompareTag(gameManager.leaderBoardTag))
         {
-            Debug.Log("상호작용");
             gameManager.InteractLeaderBoard(col);
         }
     }

@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    public GameObject ResultPanel;
-
     private void Awake()
     {
         Time.timeScale = 1.0f;
