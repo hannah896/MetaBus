@@ -14,13 +14,12 @@ public abstract class BaseObject : MonoBehaviour
 
         AnnouncePanel.SetActive(true);
 
-        if (Input.GetKeyUp(KeyCode.Return))
+        if (Input.GetKey(KeyCode.Return))
         {
             AnnouncePanel.SetActive(false);
             //미니게임 불러오기
             GameStart();
         }
-        AnnouncePanel.SetActive(false);
     }
 
     public abstract void GameStart();

@@ -3,25 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-
-public enum Horizon
-{
-    Left = -1,
-    Right = 1
-}
-
-public enum Verti
-{
-    Front = -1,
-    Back = 1
-}
-
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D _rigidbody;
     AnimationController animationController;
 
     [SerializeField] private float speed = 4.0f;
+
+    GameManager gameManager;
+
+    bool isContact = false;
 
     Vector2 moveDirection;
 
@@ -32,23 +23,31 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         animationController = GetComponent<AnimationController>();
         _rigidbody.velocity = Vector3.zero;
+        gameManager = GameManager.Instance;
     }
 
     //화면프레임기준
     private void Update()
     {
-
+        //엔터를 누른다면 
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            isContact = true;
+        }
     }
 
-    //오브젝트와 접촉했을때
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)  
     {
-        //엔터키를 누른다면 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (isContact == false) return;
+
+        GameObject col = collision.gameObject;
+        
+        //아이템 오브젝트와 상호작용
+        if (col.CompareTag(gameManager.minigameTag))
         {
-            //아이템 오브젝트와 상호작용
-            GameManager.Instance.Interact(collision.gameObject);
+            gameManager.Interact(col);
         }
+
     }
 
     //물리처리프레임기준

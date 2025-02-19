@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: New Animated Tile 2
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -671708460, guid: bde732e6f91bf014e86ff971632c0f64, type: 3}
-  - {fileID: 2117919868, guid: bde732e6f91bf014e86ff971632c0f64, type: 3}
-  - {fileID: -1045493614, guid: bde732e6f91bf014e86ff971632c0f64, type: 3}
+  - {fileID: -516159607, guid: bde732e6f91bf014e86ff971632c0f64, type: 3}
+  - {fileID: -340283677, guid: bde732e6f91bf014e86ff971632c0f64, type: 3}
+  - {fileID: -744252674, guid: bde732e6f91bf014e86ff971632c0f64, type: 3}
   m_MinSpeed: 5
   m_MaxSpeed: 5
   m_AnimationStartTime: 0

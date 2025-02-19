@@ -5,18 +5,22 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
-    public static GameManager Instance
+
+    public readonly string playerCoinScore = "playerCoinScore";
+    public readonly string playerDropScore = "playerDropScore";
+    public readonly string minigameTag = "MinigameTrigger";
+
+    public static GameManager Instance;
+    private void Awake()
     {
-        get
+        if (Instance == null)
         {
-            if (instance == null)
-            {
-                GameObject obj = new GameObject("GameManager");
-                instance = obj.AddComponent<GameManager>();
-                DontDestroyOnLoad(obj);
-            }
-            return instance;
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -27,20 +31,11 @@ public class GameManager : MonoBehaviour
         set { coinScore = value; }
     }
 
-    public GameObject Panel;
-
-    public readonly string playerCoinScore = "playerCoinScore";
-    public readonly string playerDropScore = "playerDropScore";
-
     //오브젝트와 상호작용
     public void Interact(GameObject obj)
     {
-
-        if (obj.CompareTag("MiniGameTrigger"))
-        {
-            Fountain fountain = obj.GetComponent<Fountain>();
-            fountain.Info();
-        }
+        Fountain fountain = obj.GetComponent<Fountain>();
+        fountain.Info();
     }
 
     //미니게임 게임오버되었을때 점수 저장

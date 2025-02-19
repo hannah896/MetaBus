@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - MinigameTrigger
+  - bottom
   layers:
   - Default
   - TransparentFX

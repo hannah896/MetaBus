@@ -35,7 +35,8 @@ public class Coin : MonoBehaviour
 
             if (gameover)
             {
-                PlayerPrefs.SetInt(name, );
+                score = GameManager.Instance.CoinScore;
+                PlayerPrefs.SetInt(name, score);
             }
         }
 
@@ -45,7 +46,7 @@ public class Coin : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("bottom"))
         {
-            gameObject = true;
+            gameover = true;
             Debug.Log("게임오버!");
         }
     }
