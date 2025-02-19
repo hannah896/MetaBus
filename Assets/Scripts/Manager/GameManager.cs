@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class GameManager : MonoBehaviour
 {
 
-    public readonly string playerCoinScore = "playerCoinScore";
+    public readonly string playerCoinScore = "PlayerCoinScore";
     public readonly string playerDropScore = "playerDropScore";
     public readonly string minigameTag = "MinigameTrigger";
 

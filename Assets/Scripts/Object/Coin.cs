@@ -12,17 +12,10 @@ public class Coin : MonoBehaviour
 
     void Start()
     {
-        size = Random.Range(1f, 3.7f);
+        size = Random.Range(0.3f, 1.5f);
+        
+        transform.localScale = new Vector3 (transform.localScale.x * size, transform.localScale.y, transform.localScale.z);
         minigameManager = MinigameManager.Instance;
-    }
-
-    void Update()
-    {
-        if (minigameManager.gameover)
-        {
-            score = minigameManager.CoinScore;
-            PlayerPrefs.SetInt(name, score);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,7 +23,6 @@ public class Coin : MonoBehaviour
         if (collision.gameObject.CompareTag("bottom"))
         {
             minigameManager.gameover = true;
-            Debug.Log("게임오버!");
         }
     }
 }

@@ -12,6 +12,8 @@ public class MinigameManager : MonoBehaviour
     public bool flag = true;
     public Vector3 position;
 
+    private GameManager gameManager;
+
     public void Awake()
     {
         if (Instance == null)
@@ -25,9 +27,22 @@ public class MinigameManager : MonoBehaviour
         }
     }
 
-    //미니게임 게임오버되었을때 점수 저장
-    public void SaveScore(string name)
+    private void Start()
     {
+        gameManager = GameManager.Instance;
+    }
+    private void Update()
+    {
+        if (gameover == true)
+        {
+            SaveScore();
+        }
+    }
+
+    //미니게임 게임오버되었을때 점수 저장
+    private void SaveScore()
+    {
+        name = gameManager.playerCoinScore;
         PlayerPrefs.SetInt(name, CoinScore);
     }
 }
