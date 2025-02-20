@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        Camera camera = Camera.main;
         _rigidbody = GetComponent<Rigidbody2D>();
         animationController = GetComponent<AnimationController>();
         _rigidbody.velocity = Vector3.zero;
