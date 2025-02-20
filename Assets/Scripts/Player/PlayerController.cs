@@ -10,10 +10,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float speed = 4.0f;
 
-    GameManager gameManager;
-
-    bool isContact = false;
-
+    BaseObject baseObject;
+    
     Vector2 moveDirection;
 
 
@@ -23,7 +21,6 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         animationController = GetComponent<AnimationController>();
         _rigidbody.velocity = Vector3.zero;
-        gameManager = GameManager.Instance;
     }
 
     //화면프레임기준
@@ -32,27 +29,27 @@ public class PlayerController : MonoBehaviour
         //엔터를 누른다면 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            isContact = true;
+            if (baseObject == null) return;
+
+            baseObject.Info();
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)  
+    //
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isContact == false) return;
-
-        GameObject col = collision.gameObject;
-
-        //아이템 오브젝트와 상호작용
-        if (col.CompareTag(gameManager.minigameTag))
+        if(collision.TryGetComponent(out BaseObject obj))
         {
-            gameManager.InteractMiniGame(col);
+            baseObject = obj;
+            baseObject.AnnouncePanel.SetActive(true);
         }
+    }
 
-        //아이템 리더보드랑 상호작용
-        if (col.CompareTag(gameManager.leaderBoardTag))
-        {
-            gameManager.InteractLeaderBoard(col);
-        }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (baseObject == null) return;
+        baseObject.AnnouncePanel.SetActive(false);
+        baseObject = null;
     }
 
     //물리처리프레임기준

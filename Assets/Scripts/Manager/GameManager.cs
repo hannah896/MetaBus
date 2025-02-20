@@ -22,17 +22,4 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    //미니게임 상호작용
-    public void InteractMiniGame(GameObject obj)
-    {
-        Fountain fountain = obj.GetComponent<Fountain>();
-        fountain.Info();
-    }
-
-    public void InteractLeaderBoard(GameObject obj)
-    {
-        LeaderBoard board = obj.GetComponent<LeaderBoard>();
-        board.Info();
-    }
 }
