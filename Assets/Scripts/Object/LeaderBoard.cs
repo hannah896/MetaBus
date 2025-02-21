@@ -7,6 +7,11 @@ public class LeaderBoard : BaseObject
 {
     public Text bestScoreTxt;
 
+    private void Start()
+    {
+        GameStart();
+    }
+
     public override void GameStart()
     {
         GameManager gameManager = GameManager.Instance;

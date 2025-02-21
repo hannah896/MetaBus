@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Portal : BasePortal
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.transform.position = new Vector3(0, 50, 0);
+        collision.GetComponentInChildren<SpriteRenderer>().sortingOrder = 0;
+        collision.transform.position = new Vector3(0, 15, 0);
     }
 }

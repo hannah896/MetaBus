@@ -8,9 +8,6 @@ public class CameraMove : MonoBehaviour
 {
     public Transform target;
 
-    float minX;
-    float maxX;
-
     private Vector2 pos;
 
     private GameManager gameManager;
@@ -25,14 +22,15 @@ public class CameraMove : MonoBehaviour
         gameManager = GameManager.Instance;
     }
 
-    void FixedUpdate()
+    private void LateUpdate()
     {
-        Vector3 currentPosition = transform.position;
-        Vector2 targetPosition = target.position;
+        transform.position = target.position;
 
-        float x = Mathf.Lerp(currentPosition.x, targetPosition.x, 0.02f);
-        float y = Mathf.Lerp(currentPosition.y, targetPosition.y, 0.02f);
-
-        transform.position = new(x, y, currentPosition.z);
+        if (!gameManager.isFall)
+        {
+            float x = Mathf.Clamp(transform.position.x, -2f, 2f);
+            float y = Mathf.Clamp(transform.position.y, 0f, 1f);
+            transform.position = new Vector2(x, y);
+        }
     }
 }

@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    public bool isFall;
+    public bool isFall = false;
 
     private void Awake()
     {

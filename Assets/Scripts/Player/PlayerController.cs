@@ -7,11 +7,12 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D _rigidbody;
     AnimationController animationController;
+    SpriteRenderer _spriteRenderer;
 
     [SerializeField] private float speed = 4.0f;
 
     BaseObject baseObject;
-    
+
     Vector2 moveDirection;
 
 
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         animationController = GetComponent<AnimationController>();
         _rigidbody.velocity = Vector3.zero;
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     //화면프레임기준
@@ -45,13 +47,12 @@ public class PlayerController : MonoBehaviour
             baseObject.AnnouncePanel.SetActive(true);
         }
 
-        //캐릭터가 그라운드 존과 충돌할때
-        //콜리전이 태그가 그라운드일때
-        //플레이어 물리 중력 0
         if (collision.CompareTag("Ground"))
         {
             _rigidbody.gravityScale = 0;
-            _rigidbody.AddTorque(-10f);
+            _rigidbody.mass = 1;
+
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             _rigidbody.freezeRotation = true;
         }
     }
@@ -88,6 +89,11 @@ public class PlayerController : MonoBehaviour
         if (vertical > 0.6f) y = 1;
         else if (vertical < -0.6f) y = -1;
         else y = 0;
+
+        if (GameManager.Instance.isFall)
+        {
+            moveDirection.y = 0;
+        }
 
         //_rigidbody.velocity에서 이미 캐릭터가 움직이고 있다
         _rigidbody.velocity = moveDirection.normalized * speed;

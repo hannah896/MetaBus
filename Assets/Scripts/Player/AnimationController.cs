@@ -15,11 +15,22 @@ public class AnimationController : MonoBehaviour
     private static readonly int MoveX = Animator.StringToHash("MoveX");
     private static readonly int MoveY = Animator.StringToHash("MoveY");
 
-    private static bool iswalk;
-
     protected virtual void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+    }
+
+    private void Update()
+    {
+        if (!GameManager.Instance.isFall) return;
+        
+        animator.SetBool(IsWalk, false);
+
+        int x = Random.Range(-1, 2); //-1< <2
+        int y = Random.Range(-1, 2); //-1< <2
+
+        animator.SetFloat(MoveX, x);
+        animator.SetFloat(MoveY, y);
     }
 
     public void Move(Vector2 value)
