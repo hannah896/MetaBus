@@ -34,18 +34,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //
+    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //상호작용하는 물체일 때 
         if(collision.TryGetComponent(out BaseObject obj))
         {
             baseObject = obj;
             baseObject.AnnouncePanel.SetActive(true);
         }
+
+        //캐릭터가 그라운드 존과 충돌할때
+        //콜리전이 태그가 그라운드일때
+        //플레이어 물리 중력 0
+        if (collision.CompareTag("Ground"))
+        {
+            _rigidbody.gravityScale = 0;
+            _rigidbody.AddTorque(-10f);
+            _rigidbody.freezeRotation = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        //상호작용 존 밖으로 벗어나려할때
         if (baseObject == null) return;
         baseObject.AnnouncePanel.SetActive(false);
         baseObject = null;
@@ -64,7 +77,6 @@ public class PlayerController : MonoBehaviour
 
         //velocity 값
         moveDirection = new Vector2(horizontal, vertical);// 가로 세로 대각선의 속도를 똑같게 해줌 = 단위벡터 합이 무조건 1
-
 
         //입력된 값을 벡터로 바꿔야함
         int x;

@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public abstract class BaseObject : MonoBehaviour
+public abstract class BaseObject : BasePortal
 {
     public GameObject AnnouncePanel;
 

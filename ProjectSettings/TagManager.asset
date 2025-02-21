@@ -7,6 +7,7 @@ TagManager:
   - MinigameTrigger
   - bottom
   - LeaderBoard
+  - Ground
   layers:
   - Default
   - TransparentFX
